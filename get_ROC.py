@@ -25,44 +25,10 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 # -------------------------------
 parser = argparse.ArgumentParser(description="ROC Curve Comparison for IRSTD models")
 parser.add_argument("--model_names", nargs='+',
-                    # default=['FSGPNet', 'DATransNet', 'UIUNet', 'DNANet', 'ISTDU-Net', 'ALCNet', 'RDIAN', 'ACM', 'SCTransNet'])
-                    # default=['ADGFNet', 'ADGFNet-Lite', 'AGPCNet', 'UIUNet', 'DNANet', 'ISTDU-Net', 'ALCNet', 'ACM'])
-                    # default=['ADGFNet', 'ADGFNet-Lite', 'MDAFNet', 'GSFANet', 'DATransNet', 'UIUNet', 'ALCNet', 'DNANet', 'ISTDU-Net'])
                     default=['ADGFNet', 'ADGFNet-Lite'])
-                    # default=['ADGFNet', 'ADGFNet-Lite', 'MDAFNet', 'GSFANet', 'GSFANet','GSFANet','GSFANet','GSFANet','GSFANet',])
-# default=['MTU_Net', 'AGPCNet', 'SCTransNet'])
-# default=['FSGPNet', 'DATransNet', 'SCTransNet'])
 parser.add_argument("--pth_dirs", nargs='+', default=[
-    # 'NUDT-SIRST/FSGPNet.pth.tar',
-    'NUDT-SIRST/ADGFNet_1160.pth.tar',
-    'NUDT-SIRST/ADGFNet-Lite_880.pth.tar',
-    # 'NUDT-SIRST/MDAFNet_best.pth.tar',
-    # 'NUDT-SIRST/GSFANet_400.pth.tar',
-    # # 'NUDT-SIRST/RDIAN_400.pth.tar',
-    # 'NUDT-SIRST/DATransNet_229.pth.tar',
-    # # 'NUDT-SIRST/SCTransNet_500.pth.tar',
-    # 'NUDT-SIRST/UIUNet_400.pth.tar',
-    # 'NUDT-SIRST/ALCNet_680.pth.tar',
-    # 'NUDT-SIRST/DNANet_232.pth.tar',
-    # 'NUDT-SIRST/ISTDU-Net_400.pth.tar',
-    # 'NUDT-SIRST/RDIAN_400.pth.tar',
-    # 'NUDT-SIRST/ACM_550.pth.tar',
-    # 'NUDT-SIRST/MTU_Net_301.pth.tar',
-    # # 'IRSTD-1K/FSGPNet.pth.tar',
-    # 'IRSTD-1K/ADGFNet_354.pth.tar',
-    # 'IRSTD-1K/ADGFNet-Lite_246.pth.tar',
-    # 'IRSTD-1K/MDAFNet_best.pth.tar',
-    # 'IRSTD-1K/GSFANet_371.pth.tar',
-    # # 'IRSTD-1K/RDIAN_400.pth.tar',
-    # 'IRSTD-1K/DATransNet_258.pth.tar',
-    # # 'IRSTD-1K/SCTransNet_300.pth.tar',
-    # 'IRSTD-1K/UIUNet_400.pth.tar',
-    # 'IRSTD-1K/ALCNet_235.pth.tar',
-    # 'IRSTD-1K/DNANet_400.pth.tar',
-    # 'IRSTD-1K/ISTDU-Net_400.pth.tar',
-    # # 'IRSTD-1K/RDIAN_400.pth.tar',
-    # # 'IRSTD-1K/ACM_399.pth.tar',
-    # # 'IRSTD-1K/MTU_Net_301.pth.tar',
+    'NUDT-SIRST/ADGFNet.pth.tar',
+    'NUDT-SIRST/ADGFNet-Lite.pth.tar',
 ])
 parser.add_argument("--dataset_dir", default='./data', type=str)
 parser.add_argument("--dataset_name", default='NUDT-SIRST', type=str)
@@ -168,12 +134,6 @@ def evaluate_and_plot():
             zorder=zorder,
         )
 
-        # plt.plot(fpr, tpr,
-        #          color=colors[i % len(colors)],
-        #          linestyle=linestyles[i // len(colors)],  # 循环使用线型
-        #          # label=f"{model_name}", lw=2)
-        #          label=f"{model_name} (AUC={roc_auc:.3f})", lw=2)
-
     # plt.plot([0, 1], [0, 1], 'k--', lw=1)
     plt.xlabel("False Positive Rate (FPR)")
     plt.ylabel("True Positive Rate (TPR)")
@@ -202,8 +162,5 @@ def evaluate_and_plot():
     plt.show()
 
 
-# -------------------------------
-# 主函数入口
-# -------------------------------
 if __name__ == '__main__':
     evaluate_and_plot()
